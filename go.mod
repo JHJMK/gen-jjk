@@ -1,4 +1,4 @@
-module gorm.io/gen
+module github.com/JHJMK/gen-jjk
 
 go 1.18
 
