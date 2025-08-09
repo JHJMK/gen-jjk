@@ -17,7 +17,7 @@ import (
 )
 
 // GetQueryStructMeta generate db model by table name
-func GetQueryStructMeta(db *gorm.DB, conf *model.Config) (*QueryStructMeta, error) {
+func GetQueryStructMeta(db *gorm.DB, conf *model.Config, baseModels []string) (*QueryStructMeta, error) {
 	if _, ok := db.Config.Dialector.(tests.DummyDialector); ok {
 		return nil, fmt.Errorf("UseDB() is necessary to generate model struct [%s] from database table [%s]", conf.ModelName, conf.TableName)
 	}
@@ -42,6 +42,7 @@ func GetQueryStructMeta(db *gorm.DB, conf *model.Config) (*QueryStructMeta, erro
 		Generated:       true,
 		FileName:        fileName,
 		TableName:       tableName,
+		BaseModels:      baseModels,
 		TableComment:    getTableComment(db, tableName),
 		ModelStructName: structName,
 		QueryStructName: uncaptialize(structName),

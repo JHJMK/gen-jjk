@@ -56,8 +56,8 @@ type Config struct {
 
 	dataTypeMap    map[string]func(columnType gorm.ColumnType) (dataType string)
 	fieldJSONTagNS func(columnName string) (tagContent string)
-
-	modelOpts []ModelOpt
+	BaseModels     []string
+	modelOpts      []ModelOpt
 }
 
 // WithOpts set global  model options

@@ -18,6 +18,9 @@ import (
 
 // {{.ModelStructName}} {{.StructComment}}
 type {{.ModelStructName}} struct {
+	{{range .BaseModels}}
+    {{.}} 
+    {{end}}
     {{range .Fields}}
     {{if .MultilineComment -}}
 	/*

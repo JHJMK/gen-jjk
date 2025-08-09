@@ -124,7 +124,7 @@ func (g *Generator) GenerateModel(tableName string, opts ...ModelOpt) *generate.
 
 // GenerateModelAs catch table info from db, return a BaseStruct
 func (g *Generator) GenerateModelAs(tableName string, modelName string, opts ...ModelOpt) *generate.QueryStructMeta {
-	meta, err := generate.GetQueryStructMeta(g.db, g.genModelConfig(tableName, modelName, opts))
+	meta, err := generate.GetQueryStructMeta(g.db, g.genModelConfig(tableName, modelName, opts), g.BaseModels)
 	if err != nil {
 		g.db.Logger.Error(context.Background(), "generate struct from table fail: %s", err)
 		panic("generate struct fail")
